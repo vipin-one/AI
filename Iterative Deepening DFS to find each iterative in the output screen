@@ -1,0 +1,38 @@
+graph = {
+    'A': ['B', 'C'],
+    'B': ['D', 'E'],
+    'C': ['F', 'G'],
+    'D': [],
+    'E': [],
+    'F': [],
+    'G': []
+}
+
+
+def depth_limited_dfs(node, limit, visited):
+    if limit < 0:
+        return
+    visited.append(node)
+    for neighbor in graph[node]:
+        depth_limited_dfs(neighbor, limit - 1, visited)
+
+
+def iterative_deepening_dfs(start, target, max_depth):
+    print("Iterative Deepening Depth First Search\n")
+    for depth in range(max_depth + 1):
+        visited = []
+        depth_limited_dfs(start, depth, visited)
+        print(f"Depth Limit {depth}")
+        print("Nodes explored:", " ".join(visited))
+        if target in visited:
+            print("Target found at this depth")
+            print("-" * 40)
+            return visited
+    print("Target not found within depth limit")
+    return None
+
+
+# Example usage
+path = iterative_deepening_dfs('A', 'G', 2)
+print("Final Path to Target:", path)
+print("VIPIN SINGH - 097")

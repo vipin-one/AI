@@ -1,0 +1,91 @@
+AIM : Write a program which contains three predicates : male, female, parent. Make rules for following family relations: father, mother, grandfather, grandmother, brother, sister, uncle, aunt, nephew and niece, cousin.
+
+Theory : 
+In First-Order Login (FOL), predicates are fundamental components used to represent relationship between objects or entities in a formal and structured manner. FOL, also known as first-order predicate calculus, is a logical language used for expressing statements, facts, and relationship in a way that can be manipulated and reasoned about.
+Predicates are used to define properties or relationship that hold true or false for certain objects or variable.
+They are often represented by symbols and are used in logical formulas to create statements that can be quantified and manipulated. A predicate takes one or more arguments ( variable or constant) and returns either true or false when those arguments are substituted into the predicate.
+For example, let’s consider a simple FOL predicate representing the relationship “isParentOf(x,y)” which states that “x is a parent of y”. Here, “isParentOf” is the predicate, and “x” and “y” are the arguments.
+
+In AI, FOL and predicates are used for various purposes:
+
+Knowledge Representation : FOL is used to represent and store knowledge about a domain. Predicates help define the relationships, properties, and constraints within that domain.
+Rule-Based Systems : In AI system, rules can be expressed using FOL predicates. These rules define how different predicates relate to each other and can be used for reasoning and making decisions.
+Querying and Inference : FOL allows for querying a knowledge base to retrieve information or make deductions. For example, you could use FOL to ask questions like “ Who is the parent of John?” and the system would use predicates to infer the answer based on the stored information.
+Planning and Reasoning : Predicates can be used to represent the state of a problem or a scenario, which can be used for planning and reasoning. This is especially common in AI planning and robotics.
+Natural Language Processing : FOL and predicates can be used in Natural Language understand tasks, such as interpreting sentences to extract meaningful relationships between entities. 
+Expert System : Expert System use FOL predicates to encode expert knowledge and rules to assist in decision-making within a specific domain.
+Semantic Web : FOL and predicates play a role in the development of the Semantic Web, where data is organized in a way that machine can understand and process it more intelligently.
+Overall, predicates in FOL provide a formal framework for representing and reasoning about relationships and properties, making them a foundation tool in various AI applications that involve knowledge representation, reasoning and decision- making.
+
+
+
+% ----- Facts -----
+
+male(adam).
+male(george).
+male(steve).
+male(john).
+
+female(alice).
+female(anna).
+female(eve).
+female(steffi).
+
+parent(adam, george).
+parent(eve, george).
+
+parent(adam, steffi).
+parent(eve, steffi).
+
+parent(george, john).
+parent(anna, john).
+
+parent(steffi, alice).
+parent(steve, alice).
+
+% ----- Rules -----
+
+mother(X, Y) :-
+    parent(X, Y),
+    female(X).
+
+father(X, Y) :-
+    parent(X, Y),
+    male(X).
+
+sister(X, Y) :-
+    parent(Z, X),
+    parent(Z, Y),
+    female(X),
+    X \== Y.
+
+brother(X, Y) :-
+    parent(Z, X),
+    parent(Z, Y),
+    male(X),
+    X \== Y.
+
+grandfather(X, Z) :-
+    father(X, Y),
+    parent(Y, Z).
+
+grandmother(X, Z) :-
+    mother(X, Y),
+    parent(Y, Z).
+
+siblings(X, Y) :-
+    (brother(X, Y); sister(X, Y)),
+    X \== Y.
+
+uncle(X, Y) :-
+    parent(Z, Y),
+    brother(X, Z).
+
+aunty(X, Y) :-
+    parent(Z, Y),
+    sister(X, Z).
+
+cousin(X, Y) :-
+    parent(A, X),
+    parent(B, Y),
+    siblings(A, B).

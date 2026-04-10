@@ -1,0 +1,163 @@
+print("\n")
+print("\tGame Start\nNow the task is to move all of them to right side of the river")
+print("Rules:\n1. The boat can carry at most two people\n2. If cannibals number greater than missionaries then the cannibals would eat the missionaries\n")
+
+
+lM = 3
+lC = 3
+rM = 0
+rC = 0
+userM = 0
+userC = 0
+k = 0
+
+
+print("\nM M M C C C | --- | \n")
+
+
+try:
+    while True:
+
+
+        # LEFT TO RIGHT
+        while True:
+            print("Left side -> Right side river travel")
+            userM = int(input("Enter number of Missionaries travel => "))
+            userC = int(input("Enter number of Cannibals travel => "))
+
+
+            if (userM == 0) and (userC == 0):
+                print("Empty travel not possible")
+                print("Re-enter : ")
+            elif ((userM + userC) <= 2) and ((lM - userM) >= 0) and ((lC - userC) >= 0):
+                break
+            else:
+                print("Wrong input re-enter : ")
+
+
+        lM = lM - userM
+        lC = lC - userC
+        rM = rM + userM
+        rC = rC + userC
+
+
+        print("\n")
+        for i in range(0, lM):
+            print("M ", end="")
+        for i in range(0, lC):
+            print("C ", end="")
+
+
+        print("| --> |", end="")
+
+
+        for i in range(0, rM):
+            print("M ", end="")
+        for i in range(0, rC):
+            print("C ", end="")
+
+
+        print("\n")
+
+
+        k += 1
+
+
+        # CHECK LOSS CONDITION
+        if ((lC > lM and lM > 0) or (rC > rM and rM > 0)):
+            print("Cannibals eat missionaries.\nYou lost the game")
+            break
+
+
+        # CHECK WIN CONDITION
+        if (rM + rC) == 6:
+            print("You won the game \nCongrats")
+            print("Total attempt")
+            print(k)
+            break
+
+
+        # RIGHT TO LEFT
+        while True:
+            print("Right side -> Left side river travel")
+            userM = int(input("Enter number of Missionaries travel => "))
+            userC = int(input("Enter number of Cannibals travel => "))
+
+
+            if (userM == 0) and (userC == 0):
+                print("Empty travel not possible")
+                print("Re-enter : ")
+            elif ((userM + userC) <= 2) and ((rM - userM) >= 0) and ((rC - userC) >= 0):
+                break
+            else:
+                print("Wrong input re-enter : ")
+
+
+        lM = lM + userM
+        lC = lC + userC
+        rM = rM - userM
+        rC = rC - userC
+
+
+        k += 1
+
+
+        print("\n")
+        for i in range(0, lM):
+            print("M ", end="")
+        for i in range(0, lC):
+            print("C ", end="")
+
+
+        print("| <-- |", end="")
+
+
+        for i in range(0, rM):
+            print("M ", end="")
+        for i in range(0, rC):
+            print("C ", end="")
+
+
+        print("\n")
+
+
+        if ((lC > lM and lM > 0) or (rC > rM and rM > 0)):
+            print("Cannibals eat missionaries.\nYou lost the game")
+            break
+
+
+except:
+    print("\nInvalid input please retry !!")
+
+
+
+# 0 2 0 1 0 2 0 1 2 0 1 1 2 0 0 1 0 2 1 0 1 1
+
+#The Missionaries and Cannibals Problem is a classic puzzle and a well-known problem in the field of artificial intelligence and computer science. It is a river-crossing puzzle that involves moving missionaries and cannibals across a river in a boat while adhering to specific rules to ensure the safety of the missionaries and prevent the cannibals from outnumbering them in either side of the river.
+#Problem Components:
+#Missionaries and Cannibals : In the problem, there are three missionaries and three cannibals, representing two different groups. The missionaries are trying to cross a river, but they must be careful not to be outnumbered by the cannibals at any location ( either on the starting side, the ending side, or in the boar).
+#River : The river is the obstacle that the missionaries and cannibals must cross. It acts as the boundary between two sides: the starting and the ending side.
+#Boat : A boat is available for transporting the missionaries and cannibals across the river. The boat can carry a maximum of two people at a time ( either two missionaries, two cannibals, or one of each).
+#Initial State : The initial state of the problem specific the number of missionaries and cannibals on each of the river and the location of the boat. At the start, all three missionaries and three cannibals are on the starting side, and the boat is also in the starting side.
+#Goal State : The goal state defines the desired arrangement of the people on the ending side of the river. Typically, the goal is to move all three missionaries and three cannibals from the starting side to the ending side while adhering to the safety rules.
+
+
+
+#Problem Formulations : 
+#Given the initial state, goal state, and constraints, the AI’s task is to find a sequence of boat trips that will safety transport all the missionaries and cannibals to the ending side of the river while obeying the following rules:
+#At no point during the transportation process should there be more cannibals that missionaries on either side of the river (both starting and ending sides.)
+#The boat can carry a maximum of two people at a time, and there must be at least one person (either a missionary or a cannibal) in the boat to operate it.
+#Objective : 
+#The primary objective of solving the Missionaries and Cannibals Problem in to find a sequence of boat trips that will successfully move all the missionaries and cannibals from the starting side to the ending side of the river while satisfying the safety rules.
+
+
+
+#Challenges : 
+#The Missionaries and Cannibals Problem presents several challenges : 
+#State Space Search : It requires an AI algorithm to explore the state space efficiently to find a solution. The state space can become complex as the problem progresses.
+#Safety Constraints: Ensuring the safety of the missionaries and adhering to the constraints is essential, making the problem-solving more challenging.
+#Optimization : Finding an optimal solution that minimizes the number of boat trips can be a secondary objective in some cases.
+#Variations : Variations of the problem may involve different numbers of missionaries and cannibals or additional constraints, making the problem more complex and requiring different problems-solving strategies.
+
+#In summary, the Missionaries and Cannibals Problem in AI involves safely transporting missionaries and cannibals across a river a boat while adhering to specific safety rules and constraints. This problem serves as a classic example of state space search and problem-solving techniques in artificial intelligence.
+# 0 2 0 1 0 2 0 1 2 0 1 1 2 0 0 1 0 2 1 0 1 1

@@ -1,0 +1,36 @@
+Aim: Write a program to solve Constraint Satisfaction Problem.
+
+Theory: A Constraint Satisfaction Problem (CSP) is a type of problem-solving framework in artificial intelligence and computer science that deals with finding solutions to problems subject to a set of constraints. In a CSP, you have a set of variables, a set of domains (possible values) for each variable, and a set of constraints that specify the allowable combinations of values to the variables.
+
+In other words, a CSP involves finding assignments of values to variables that satisfy all given constraints. The goal is to find a consistent assignment that meets all the requirements
+
+Here are the main components of a CSP:
+
+1. Variables: These represent the entities you want to assign values to. Each variable can take values from its corresponding domain.
+
+2. Domains: Each variable has an associated domain, which is a set of possible values that the variable can take.
+
+3. Constraints: Constraints define the rules or conditions that must be satisfied by the variable assignments. Constraints restrict the combinations of values that can be assigned to variables.
+
+CSPs are used to model and solve a wide range of real-world problems, including scheduling, timetabling, resource allocation, configuration, planning, and more. They are particularly useful when the problem can be naturally described in terms of variables and constraints.
+
+The solution to a CSP involves finding an assignment of values to variables such that all constraints are satisfied. This can be achieved using various algorithms and techniques, including backtracking, constraint propagation, heuristics, and search strategies. Backtracking search is one of the fundamental methods used to systematically explore the search space of possible assignments.
+
+CSPs are applicable in 
+coloring(WA, SA, NT, QU, NSW, VI) :-
+    different(WA, SA),
+    different(WA, NT),
+    different(NT, SA),
+    different(NT, QU),
+    different(SA, QU),
+    different(SA, NSW),
+    different(SA, VI),
+    different(QU, VI),
+    different(QU, NSW),
+    different(NSW, VI).
+different(red, blue).
+different(red, green).
+different(blue, red).
+different(blue, green).
+different(green, red).
+different(green, blue).
