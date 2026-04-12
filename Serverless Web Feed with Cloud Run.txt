@@ -1,0 +1,140 @@
+Serverless Web Feed with Cloud Run & Scheduler
+
+PART 1: Environment Setup
+
+Go to: https://www.cloudskillsboost.google
+
+>> Search : Cloud Run Functions: Qwik Start
+
+Open Cloud Shell: Click the >_ icon in the top right of the Google Cloud Console.
+Enable the "Big Four" APIs: Copy and paste this into the terminal:
+
+Just Copy and Paste 
+
+Bash
+gcloud services enable \
+run.googleapis.com \
+cloudscheduler.googleapis.com \
+cloudbuild.googleapis.com \
+appengine.googleapis.com
+
+>> gcloud compute project-info describe \
+--format="value(commonInstanceMetadata.items.google-compute-default-region)"
+
+If you deploy outside allowed region → Policy error
+
+Initialize the Scheduler Region: (Crucial for sandboxes)
+Bash
+>> gcloud app create --region=europe-west1
+
+PART 2: Create the Application Files
+
+1. Create Project Folders:
+Bash 
+mkdir web-feed-lab && cd web-feed-lab
+mkdir templates
+
+2. Create the Frontend (templates/index.html): Run nano templates/index.html and paste:
+
+
+command:
+nano templates/index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GCP News Feed</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 40px; background: #f8f9fa; }
+        .container { max-width: 800px; margin: auto; }
+        .card { background: white; padding: 20px; margin-bottom: 15px; border-radius: 12px; border-left: 5px solid #4285F4; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { color: #202124; text-align: center; }
+        a { text-decoration: none; color: #1a73e8; font-weight: bold; font-size: 1.1em; }
+        .meta { font-size: 0.8em; color: #70757a; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Live Hacker News Feed</h1>
+        <p style="text-align:center">Triggered by Cloud Scheduler | Hosted on Cloud Run</p>
+        {% for entry in entries %}
+        <div class="card">
+            <a href="{{ entry.link }}" target="_blank">{{ entry.title }}</a>
+            <div class="meta">Source: hnrss.org</div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+
+ To save: Press Ctrl + O, then Enter.
+To exit: Press Ctrl + X.
+
+3. Create the Logic (main.py): Run nano main.py and paste:
+
+command:
+nano main.py
+
+Python Code
+import feedparser
+import os
+from flask import Flask, render_template
+
+app = Flask(__name__)
+FEED_URL = "https://hnrss.org/frontpage"
+
+@app.route("/")
+def fetch_feed():
+    # Added agent to prevent 403 Forbidden errors
+    feed = feedparser.parse(FEED_URL, agent='Mozilla/5.0')
+    print(f"CRON CHECK: Fetched {len(feed.entries)} stories.")
+    return render_template("index.html", entries=feed.entries[:10])
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+
+
+ To save: Press Ctrl + O, then Enter.
+To exit: Press Ctrl + X.
+
+4. Define Dependencies (requirements.txt): 
+Run nano requirements.txt and paste:
+
+flask
+feedparser
+gunicorn
+
+To save: Press Ctrl + O, then Enter.
+To exit: Press Ctrl + X.
+
+
+PART 3: Deploy to Cloud Run
+
+
+Run Deployment:
+
+Bash
+gcloud run deploy web-feed-service \
+  --source . \
+  --allow-unauthenticated \
+  --region europe-west1
+
+
+Capture the URL :  Once finished, the terminal will output a Service URL (e.g., https://web-feed-service-xyz.a.run.app). Copy this.
+
+PART 4: Automate with Cloud Scheduler
+We now schedule a "heartbeat" to hit our service every 10 minutes.
+Create the Job: (Replace [YOUR_URL] with the URL from Part 3)
+Bash
+gcloud scheduler jobs create http feed-job \
+  --schedule="*/10 * * * *" \
+  --uri="https://web-feed-service-137662179424.europe-west1.run.app" \
+  --http-method=GET \
+  --location=europe-west1
+
+Manual Trigger (Proof of Concept): To show it works immediately without waiting:
+Bash
+gcloud scheduler jobs run feed-job --location=us-central1
+
+

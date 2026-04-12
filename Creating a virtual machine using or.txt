@@ -1,0 +1,23 @@
+Creating a virtual machine using oracle virtual box.
+
+Step 1: Open oracle virtualbox and click on New.
+
+Step 2: After clicking on new, give name, folder pathlocation
+and iso file then click on hardware.
+
+Step 3: after that click on hardware and give base memory to
+8gb and 4 processors.
+
+Step 4 : After that click on Hard Disk and allocate to 30gb and
+then click on Finish.
+
+Step 5: click on start.
+
+Step 6: u will get on this screen and start the process by clicking
+Next.
+
+Step 7: click on Install now
+
+Step 8: after completing the installation, and create a account
+then u will see this page.
+

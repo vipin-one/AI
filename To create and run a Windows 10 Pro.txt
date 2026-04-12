@@ -1,0 +1,91 @@
+To create and run a Windows 10 Pro Virtual Machine using Hyper-V Manager with
+Generation 1, Default Switch, and storing virtual machine files in D drive.
+
+Step 1 – Enable Hyper-V
+1. Open Control Panel
+
+2. Click Programs
+3. Click Turn Windows features on or off
+4. Tick Hyper-V
+o Hyper-V Management Tools
+o Hyper-V Platform
+5. Click OK
+6. Restart the computer
+		>> run >> optionalfeatures
+
+Step 2 – Create Folder in D Drive
+1. Open File Explorer
+2. Open D: drive
+3. Right-click → New → Folder
+4. Name it:
+HyperV_VM
+This folder will store the virtual machine files.
+
+Step 3 – Open Hyper-V Manager
+1. Press Windows Key
+2. Type Hyper-V Manager
+3. Open it
+
+Step 4 – Create New Virtual Machine
+1. In Hyper-V Manager, click New → Virtual Machine
+2. Click Next
+3. Enter name:
+Windows10_Pro
+4. Click Next
+
+Step 5 – Specify Location
+1. Select Store the virtual machine in a different location
+2. Click Browse
+3. Select D:\HyperV_VM
+4. Click Next
+
+Step 6 – Choose Generation
+1. Select Generation 1
+2. Click Next
+
+Step 7 – Assign Memory
+1. Enter 4096 MB (4 GB)
+2. Uncheck Use Dynamic Memory
+3. Click Next
+
+Step 8 – Configure Networking
+1. Select Default Switch
+2. Click Next
+
+Step 9 – Create Virtual Hard Disk
+1. Choose Create a virtual hard disk
+2. Name: Win10.vhdx
+3. Location: D:\HyperV_VM
+4. Size: 50 GB
+5. Click Next
+
+Step 10 – Attach Windows ISO
+1. Select Install an operating system from a bootable image file
+2. Click Browse
+3. Select Windows 10 Pro ISO
+4. Click Next
+5. Click Finish
+
+Step 11 – Start Virtual Machine
+1. Select Windows10_Pro
+2. Click Connect
+3. Click Start
+
+Step 12 – Install Windows 10 Pro
+1. Choose language → Click Next
+2. Click Install Now
+3. Select Windows 10 Pro
+4. Accept license → Click Next
+5. Choose Custom Install
+6. Select virtual disk → Click Next
+7. Windows installation will begin
+
+Step 13 – Complete Setup
+1. Enter username
+2. Set password
+3. Choose privacy settings
+4. Windows desktop will appear
+
+5. Result
+A Windows 10 Pro virtual machine was successfully created using Hyper-V Manager
+with Generation 1, Default Switch, and files stored in D drive.
