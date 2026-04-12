@@ -1,0 +1,75 @@
+To develop and deploy a simple web application using Google App Engine on Google Cloud Platform (GCP).
+
+Step 1 — Open Google Skills Boost Lab
+
+Go to: https://www.cloudskillsboost.google
+
+Search: “App Engine: Qwik Start – Python”
+This gives temporary GCP lab access without needing your own billing setup.
+
+Step 2 — Start the Lab
+>> Click “Start Lab”
+
+Step 3 — Open Google Cloud Console
+>>Click “Open Google Cloud Console” from lab page
+
+Step 4 — Open Cloud Shell
+>> Click Cloud Shell icon at top-right
+
+Step 5 — Download Sample Application
+Run command:
+>> git clone https://github.com/GoogleCloudPlatform/python-docs-samples.git
+
+Step 6 — Go to Application Folder
+Run command:
+>> cd python-docs-samples/appengine/standard_python3/hello_world
+
+Step 7 — Deploy the Application
+Run command:
+>> gcloud app deploy
+
+Step 8 — Select Deployment Region
+When asked numeric choice, enter:
+3
+Select region: us-west1
+
+Step 9 — Wait for Deployment Complete
+Wait 1–2 minutes
+Look for message: Deployed service [default]
+This confirms successful cloud deployment.
+
+Step 10 — Open the Application
+Run command:
+>> gcloud app browse
+Browser opens app URL showing: Hello World!
+
+Step 11 — Modify Application Code
+Run:
+nano main.py
+@app.route("/")
+def hello():
+    return "Hello from Cloud Computing Lab!"
+
+@app.route("/student")
+def student():
+    return "App Engine Practical Successful"
+Save with: CTRL+X → Y → Enter
+
+Step 12 — Redeploy Updated App
+Run again:
+>> gcloud app deploy
+Press Y when asked
+
+Step 13 — Test Updated Output
+Open app again
+Main page should show: Hello from Cloud Computing Lab!
+Add /student in URL to see: App Engine Practical Successful
+
+Step 14 — View Logs
+Run command:
+>> gcloud app logs tail -s default
+This displays live app activity and errors
+Stop using CTRL+C
+
+Final Result
+Application successfully deployed and running on Google App Engine.

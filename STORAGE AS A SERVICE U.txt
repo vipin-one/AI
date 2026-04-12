@@ -1,0 +1,106 @@
+Practical 1 : STORAGE AS A SERVICE USING GOOGLE CLOUD PLATFORM
+(Without Credit / Debit Card – Using Google Cloud Skills Boost Qwik Start Labs)
+
+Step 1 — Open Google Cloud Skills Boost
+Go to: https://www.cloudskillsboost.google
+
+Click Sign In
+Login using your somaiya.edu Google account
+This gives access to free educational GCP lab resources without needing a card.
+
+Step 2 :Search
+Cloud Storage: Qwik Start - Cloud Console
+
+Step 3
+Click Start Lab
+
+Step 4 — Open Google Cloud Console
+
+Step 5 — Open Cloud Storage Section
+In Navigation Menu select:
+Storage → Buckets
+This opens Google Cloud Storage management page.
+
+Step 6 — Create New Bucket
+Click Create Bucket
+Enter bucket name:
+somaiya-storage-yourname
+Choose region: Asia
+Choose storage class: Standard
+Click Create
+
+Step 7 — Select Bucket Region
+Choose location as: Asia
+Select Region type
+This defines where your data will be stored physically.
+
+Step 8 — Choose Storage Class
+Select: Standard Storage Class
+This is used for frequently accessed files.
+
+Control Access to Object : Uniform 
+Data Protection : Use Default Retention Duration
+
+
+Step 9 — Create Bucket Finalize
+Click Create
+Your cloud storage bucket is now ready.
+
+Step 10 — Upload a File
+Open created bucket
+Click Upload Files
+Select PDF, image, or text file from computer
+File becomes stored as an object in bucket.
+
+Step 11 — Make File Public
+Click uploaded file
+Open Permissions tab
+Click Grant Access
+Enter Principal: allUsers
+Select Role: Storage Object Viewer
+Save changes
+This makes file accessible publicly via internet.
+
+Step 12 — Copy Public URL
+Copy generated Public URL
+Open it in new browser tab
+Verify file opens successfully online.
+
+Step 13 — Enable Object Versioning
+Go to Bucket Configuration
+Enable Object Versioning
+Upload the same file again
+Observe multiple versions
+This keeps multiple versions of same file.
+ Observation Table
+Parameter
+Value
+Bucket Name
+__________
+File Uploaded
+__________
+Public URL Generated
+Yes / No
+Versioning Enabled
+Yes / No
+Number of Versions
+__________
+
+
+
+Step 14 — Upload Same File Again
+Re-upload same file into bucket
+Observe multiple stored versions created automatically
+This protects against accidental overwrite or deletion.
+
+Step 15 — Verify Observation Table
+Record:
+Bucket Name
+Uploaded File Name
+Public URL Generated (Yes/No)
+Versioning Enabled (Yes/No)
+Number of Versions
+This completes practical verification.
+
+Final Result
+Storage as a Service using Google Cloud Storage successfully implemented without credit/debit card.

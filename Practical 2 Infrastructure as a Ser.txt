@@ -1,0 +1,85 @@
+Practical 2: Infrastructure as a Service (IaaS) Using Google Cloud Platform 
+
+Step 1 — Open Google Cloud Skills Boost
+Go to: https://www.cloudskillsboost.google
+
+Click Sign In
+Login using your somaiya.edu Google account
+This provides free temporary GCP lab access without credit/debit card.
+
+Step 2 — Search for Compute Engine Lab
+In search box type:
+Compute Engine: Qwik Start – Windows / Linux
+Open the lab from search results
+This loads the IaaS practical environment.
+
+Step 3 — Start the Lab
+Click Start Lab
+Wait until temporary credentials appear
+These credentials activate your temporary cloud project.
+
+Step 4 — Open Google Cloud Console
+Click Open Google Cloud Console
+Login using temporary username and password provided by the lab
+This opens your temporary GCP dashboard.
+
+Step 5 — Open Compute Engine
+In Navigation Menu go to:
+Compute Engine → VM Instances
+This opens virtual machine management page.
+
+Step 6 — Create New VM Instance
+Click Create Instance
+This starts virtual machine setup process.
+
+Step 7 — Enter VM Name
+Type VM name like:
+somaiya-vm-yourname
+Name must be unique in project.
+
+Step 8 — Select Region and Zone
+Choose Region: Asia
+Choose default Zone
+This decides physical hosting location of VM.
+
+Step 9 — Select Machine Type
+Choose machine type: e2-micro
+This assigns CPU and memory resources to VM.
+
+Step 10 — Select Boot Disk
+Choose Debian Linux as operating system
+This installs Debian OS inside VM.
+
+Step 11 — Create VM
+Click Create
+Wait for VM instance to start
+Your cloud virtual machine is now running.
+
+Step 12 — Connect to VM via SSH
+Click SSH button next to created VM
+Browser terminal window opens
+This gives remote access to VM command line.
+
+Step 13 — Run Basic Commands
+In SSH terminal run:
+ls
+pwd
+uname -a
+These commands show files, current directory, and OS details.
+
+Step 14 — Stop the VM
+Select VM instance
+Click Stop
+This demonstrates resource control and pay-as-you-go concept.
+
+Step 15 — Record Observation Table
+Note down:
+VM Name
+Region
+Machine Type
+OS Used
+VM Status (Running / Stopped)
+This completes experiment verification.
+
+Final Result
+Infrastructure as a Service using Google Compute Engine successfully implemented without credit/debit card.
